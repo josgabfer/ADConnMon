@@ -3,20 +3,24 @@ from email.mime.text import MIMEText
 from dotenv import dotenv_values
 
 config = dotenv_values(".env")
-passw = config['PASS']
 
-
-sender = 'josgabfer@gmail.com'
-receivers = 'jduartef@cisco.com'
+EMAIL_ADDRESS = config['EMAIL_ADDRESS']
+PASS = config['PASS']
+RECEIPIENTS = config['RECEIPIENTS']
 
 msg = MIMEText('There was a connection error detected in the AD Connector')
 msg['Subject'] = 'AD Connector Error notification'
 msg['From'] = 'josgabfer@gmail.com'
-msg['To'] = 'jduartef@cisco.com'
+msg['To'] = RECEIPIENTS
 
-server = smtplib.SMTP('smtp.gmail.com',587)
-server.starttls()
-server.login(sender,passw)
+with smtplib.SMTP('smtp.gmail.com',587) as smtp:
+    smtp.ehlo()
+    smtp.starttls()
+    smtp.ehlo()
+
+    smtp.login(EMAIL_ADDRESS,PASS)
+
+
 
 print('login success')
 server.sendmail(sender, receivers, msg.as_string())
