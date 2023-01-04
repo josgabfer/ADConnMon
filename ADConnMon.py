@@ -65,9 +65,10 @@ def scan_file():
             if location != -1:
                 print ("yes", location)
                 send_email()
+                break
                 
             else:
-                print("No")
+                print("No errors found.")
 
     
 
