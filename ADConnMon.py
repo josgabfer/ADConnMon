@@ -8,17 +8,17 @@ config = dotenv_values(".env")
 
 EMAIL_ADDRESS = config['EMAIL_ADDRESS']
 PASS = config['PASS']
-RECEIPIENTS = config['RECEIPIENTS']
+RECIPIENTS = config['RECIPIENTS']
 
-FOLDER = ''
-
+FOLDER = r''
+FILE = FOLDER + '\\' + ''
 
 def send_email():
     """This function will send an alert to the desired recipients"""
     msg = EmailMessage()
     msg['Subject'] = 'AD Connector Error Found!'
     msg['From'] = EMAIL_ADDRESS
-    msg['To'] = RECEIPIENTS
+    msg['To'] = RECIPIENTS
     msg.set_content('Connection Error found in the AD connector, please check your Umbrella Dashboard and connectivity to all DCs')
 
     msg.add_alternative("""
@@ -48,22 +48,21 @@ def send_email():
 
     with smtplib.SMTP_SSL('smtp.gmail.com',465) as smtp:
         smtp.login(EMAIL_ADDRESS,PASS)
-
         print('login success')
         smtp.send_message(msg)
-        print("Email has been sent to: ", RECEIPIENTS)
+        print("Email has been sent to: ", RECIPIENTS)
 
 def scan_file():
     """This function will read the [] file and check for errors, if errors are detected send_mail() will be called"""
-    errors = ['Exception', 'Failed to sync!', "duck", 'ADSync CheckDiff error']
-    FILE = FOLDER + '/' + ''
+    errors = ['Exception', 'Failed to sync!', 'ADSync CheckDiff error']
+    
 
     with open (FILE, 'rb', 0) as file:
         s = mmap.mmap(file.fileno(), 0, access=mmap.ACCESS_READ)
         for error in errors:
             location = s.find(bytes(error, 'utf-8'))
             if location != -1:
-                print ("yes", location)
+                print("Error logs detected")
                 send_email()
                 break
                 
