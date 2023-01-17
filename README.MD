@@ -27,6 +27,7 @@ getToken.py - this python file will take care of generating a new authentication
         RECIPIENTS = ''  
         KEY = ''  
         SECRET = ''  
+    
     2) Add the values between the '' for each parameter:  
         EMAIL_ADDRESS: the sender's email address  
         PASS: password created by the sender that authorizes applications send  
