@@ -14,11 +14,10 @@ git clone https://github.com/josgabfer/ADConnMon.git
 ## Files
 
 ADConnectorMonitor.py - this python file perform 3 tasks: 
-```
     1) Send a GET request to https://api.umbrella.com/deployments/v2/virtualappliances to get a list of all the AD integration components in the Umbrella dashboard.
     2) Check the status of all AD connectors.
     3) Send email alerts if it detects an AD connector in error state
-```
+
 
 getToken.py - this python file will take care of generating a new authentication token if needed.
 
