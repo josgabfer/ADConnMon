@@ -1,6 +1,6 @@
 # AD Connector Monitor
 
-The AD Connector Monitor script sends email alerts when it detects an AD connector in error state.\
+The AD Connector Monitor script sends email alerts when it detects an AD connector in error state. \
 This is achieved by sending a GET request to https://api.umbrella.com/deployments/v2/virtualappliances to get all the AD integration components (VAs, DCs and AD connectors) from the dashboard. After this, the script checks the status of all AD connectors in the dashboard and if it finds an AD connector in error state, it will send an email alert to the specified recipients.
 
 ## Installation
@@ -13,10 +13,10 @@ git clone https://github.com/josgabfer/ADConnMon.git
 
 ## Files
 
-ADConnectorMonitor.py - this python file perform 3 tasks:\ 
+ADConnectorMonitor.py - this python file perform 3 tasks: \ 
     1) Send a GET request to https://api.umbrella.com/deployments/v2/virtualappliances to get a list of all the AD integration components in the Umbrella dashboard.\
-    2) Check the status of all AD connectors.\
-    3) Send email alerts if it detects an AD connector in error state.\
+    2) Check the status of all AD connectors. \
+    3) Send email alerts if it detects an AD connector in error state. \
 
 
 getToken.py - this python file will take care of generating a new authentication token if needed.
