@@ -19,13 +19,13 @@ FOLDER = r'C:\Testing\logs'
 FILE = FOLDER + '\\' + 'sample.txt'
 count = 0
 
-def send_email():
+def send_email(connectorName):
     """This function will send an alert to the desired recipients"""
     msg = EmailMessage()
     msg['Subject'] = 'AD Connector Error Found!'
     msg['From'] = EMAIL_ADDRESS
     msg['To'] = RECIPIENTS
-    msg.set_content('Connection Error found in the AD connector, please check your Umbrella Dashboard and connectivity to all DCs')
+    msg.set_content(f'Connection Error found in {connectorName}. Please check your Umbrella Dashboard and connectivity to all DCs')
 
     msg.add_alternative("""
     <!DOCTYPE >
@@ -38,7 +38,7 @@ def send_email():
     </head>
     <body>
         <h1>AD Connector Error</h1>
-        <p>The AD Connector Monitor script detected a connectivity error, it is recommended to check your Umbrella dashboard.</p>
+        <p>The AD Connector Monitor script detected an error with: """ + connectorName + """. Please check your Umbrella dashboard.</p>
 
         <style type="text/css">
             body{
@@ -77,17 +77,15 @@ def send_email():
 
 def get_request(): 
     url = "https://api.umbrella.com/deployments/v2/virtualappliances"
-    token_type = "UNIVERSAL"
     global count
     count += 1
     if (count == 3):
         print(colored(f"\nMaximum attempts to reach {url} exceeded", "red"))
         return
     config = dotenv_values(find_dotenv())
-    env_token_type = token_type + '_TOKEN'
-    token = config.get(env_token_type)
+    token = config.get('TOKEN')
     if (token == None):
-        token = (generate_auth_string(token_type))
+        token = (generate_auth_string())
     headers = {
             "Authorization": "Bearer " + token,
             "Content-Type": "application/json"
@@ -98,7 +96,7 @@ def get_request():
     try:
         response = requests.get(url, headers=headers)
         if (response.status_code == 401 or response.status_code == 403):
-            token = generate_auth_string(token_type)
+            token = generate_auth_string()
             return get_request()
         elif (response.status_code == 200):
             print(colored("Get request successfully executed!", "green"))
@@ -112,11 +110,12 @@ def get_request():
         print(colored(f'HTPP error occured: {e}','red'))
 
 def alert():
-    lista = get_request
-    print (lista)
+    adComponents = get_request()
+    for component in adComponents:
+        if (component.get("type") == "connector" and component.get("health") == "error"):
+            send_email(component.get("name"))
 
     
 
 if __name__ == '__main__':
-    scan_file()
-
+    alert()

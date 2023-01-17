@@ -33,23 +33,23 @@ def check_token(token_type):
         If the token does not exists, it calls generate token with the token type
     """
     config = dotenv_values(find_dotenv())
-    if token_type + '_TOKEN' in config:
+    if 'TOKEN' in config:
         return True
     else:
         return False
 
-def generate_auth_string(token_type):
+def generate_auth_string():
     """Here we encode the API Secret and Key in base64 format needed for the generate_token() function to request an access token."""
     config = dotenv_values(find_dotenv())
-    key = config[token_type + '_KEY']
-    secret = config[token_type + '_SECRET']
+    key = config['KEY']
+    secret = config['SECRET']
 
     auth_string = f"{key}:{secret}"
 
     message_bytes = auth_string.encode('ascii')
     base64_bytes = base64.b64encode(message_bytes)
     base64_auth = base64_bytes.decode('ascii')
-    token_API_Type = token_type + '_' +'TOKEN'
+    token_API_Type = 'TOKEN'
 
     return (generate_token(base64_auth, token_API_Type))
     
