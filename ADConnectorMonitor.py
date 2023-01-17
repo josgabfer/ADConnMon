@@ -47,7 +47,7 @@ def send_email(connectorName):
     </html>
     """, subtype='html')
 
-
+    
     with smtplib.SMTP_SSL('smtp.gmail.com',465) as smtp:
         smtp.login(EMAIL_ADDRESS,PASS)
         print('login success')

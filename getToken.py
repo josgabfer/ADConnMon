@@ -20,23 +20,7 @@ requests_log.propagate = True
 # dotenv.load_dotenv()
 
 
-def check_token(token_type):
-    """
-        This module will check if the module exists, it will take a token type
-        Token type options: 
-            A --> Admin
-            D --> Deployments
-            P --> Policies
-            R --> Reports
-            X --> All or custom API 
-        If the token exists, it returns the token to the requester
-        If the token does not exists, it calls generate token with the token type
-    """
-    config = dotenv_values(find_dotenv())
-    if 'TOKEN' in config:
-        return True
-    else:
-        return False
+
 
 def generate_auth_string():
     """Here we encode the API Secret and Key in base64 format needed for the generate_token() function to request an access token."""
