@@ -37,9 +37,6 @@ getToken.py - this python file will take care of generating a new authentication
     KEY: API Key obtained from the Umbrella dashboard (Make sure that the API Key you created has "Virtual Appliances" included in the Key scope)  
     SECRET: Key secret  
 ```
-## Usage
-
-You can run the script
 
 ## Usage
 
