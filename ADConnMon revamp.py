@@ -1,22 +1,18 @@
 import smtplib
 from email.message import EmailMessage
-import mmap
 from dotenv import dotenv_values, find_dotenv
 from getToken import generate_auth_string
 import requests
 from requests.models import HTTPError
 from termcolor import colored
 import http.client as http_client
-import logging
+
 
 config = dotenv_values(".env")
 
 EMAIL_ADDRESS = config['EMAIL_ADDRESS']
 PASS = config['PASS']
 RECIPIENTS = config['RECIPIENTS']
-
-FOLDER = r'C:\Testing\logs'
-FILE = FOLDER + '\\' + 'sample.txt'
 count = 0
 
 def send_email(connectorName):
@@ -58,24 +54,8 @@ def send_email(connectorName):
         smtp.send_message(msg)
         print("Email has been sent to: ", RECIPIENTS)
 
-"""def scan_file():
-    This function will read the [] file and check for errors, if errors are detected send_mail() will be called
-    errors = ['Exception', 'Failed to sync!', 'ADSync CheckDiff error']
-    
-
-    with open (FILE, 'rb', 0) as file:
-        s = mmap.mmap(file.fileno(), 0, access=mmap.ACCESS_READ)
-        for error in errors:
-            location = s.find(bytes(error, 'utf-8'))
-            if location != -1:
-                print("Error logs detected")
-                send_email()
-                break
-                
-            else:
-                print("No errors found.")"""
-
 def get_request(): 
+    """This function will send a GET request to get a list of all AD integration components"""
     url = "https://api.umbrella.com/deployments/v2/virtualappliances"
     global count
     count += 1
@@ -110,12 +90,11 @@ def get_request():
         print(colored(f'HTPP error occured: {e}','red'))
 
 def alert():
+    """This function will search for all the AD connectors in error state to call the send email function"""
     adComponents = get_request()
     for component in adComponents:
         if (component.get("type") == "connector" and component.get("health") == "error"):
             send_email(component.get("name"))
-
-    
 
 if __name__ == '__main__':
     alert()
