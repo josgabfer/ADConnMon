@@ -29,6 +29,7 @@ getToken.py - this python file will take care of generating a new authentication
     KEY = ''  
     SECRET = ''  
 ```
+
 ```
 2) Add the values between the '' for each parameter:  
     EMAIL_ADDRESS: the sender's email address  
