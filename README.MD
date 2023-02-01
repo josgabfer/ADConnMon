@@ -1,3 +1,8 @@
+# Disclaimer
+This tool is a best effor created to take advantage of the Umbrella APIs. This is not an official Cisco solution, there is no official documentation for this tool, and we don't provide any official support/troubleshooting.
+For the official Umbrella APIs documentation please go to: https://developer.cisco.com/docs/cloud-security/#!umbrella-introduction
+If you encounter an issue with the code, please open an issue on Github.
+
 # AD Connector Monitor
 
 The AD Connector Monitor script sends email alerts when it detects an AD connector in error state.  
