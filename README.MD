@@ -22,8 +22,10 @@ Package            Version
 certifi            2022.6.15.1
 charset-normalizer 2.1.1
 flatdict           4.0.1
+fsspec             2022.11.0
 idna               3.3
 numpy              1.23.3
+oauthlib           3.2.0
 pandas             1.4.4
 pip                22.2.2
 python-dateutil    2.8.2
