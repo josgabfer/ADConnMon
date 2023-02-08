@@ -40,22 +40,23 @@ ADConnectorMonitor.py - this python file perform 3 tasks:
 getToken.py - this python file will take care of generating a new authentication token if needed.
 
 .env - this file is not included in the repository files since it needs to be created locally on the machine. The .env file is where we store the parameters that the ADConnectorMonitor.py file needs to work. Please follow the next instructions:  
-    1) Create the .env file in the same location where the ADConnectorMonitor.py is stored and copy & paste the following text and fill:  
-        EMAIL_ADDRESS = ''  
-        PASS = ''  
-        RECIPIENTS = ''  
-        KEY = ''  
-        SECRET = ''  
-    2) Add the values between the '' for each parameter:  
-        EMAIL_ADDRESS: the sender's email address  
-        PASS: password created by the sender that authorizes applications send  
-        RECIPIENTS: the recipient's email address that will receive the email alerts (If you plan on adding more than one recipient, please use a coma to separate each email address)  
-        KEY: API Key obtained from the Umbrella dashboard (Make sure that the API Key you created has "Virtual Appliances" included in the Key scope)  
-        SECRET: Key secret  
+```
+1) Create the .env file in the same location where the ADConnectorMonitor.py is stored and copy & paste the following text and fill:  
+    EMAIL_ADDRESS = ''  
+    PASS = ''  
+    RECIPIENTS = ''  
+    KEY = ''  
+    SECRET = ''  
+```
 
-## Usage
-
-You can run the script
+```
+2) Add the values between the '' for each parameter:  
+    EMAIL_ADDRESS: the sender's email address  
+    PASS: password created by the sender that authorizes applications send  
+    RECIPIENTS: the recipient's email address that will receive the email alerts (If you plan on adding more than one recipient, please use a coma to separate each email address)  
+    KEY: API Key obtained from the Umbrella dashboard (Make sure that the API Key you created has "Virtual Appliances" included in the Key scope)  
+    SECRET: Key secret  
+```
 
 ## Usage
 
