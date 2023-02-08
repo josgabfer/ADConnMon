@@ -9,8 +9,8 @@ Use git to clone the repository files to your machine:
 
 ```bash
 git clone https://github.com/josgabfer/ADConnMon.git
-```
-Requirements:
+
+# Requirements:
 Package            Version
 ------------------ -----------
 certifi            2022.6.15.1
@@ -28,7 +28,7 @@ setuptools         63.2.0
 six                1.16.0
 termcolor          2.0.1
 urllib3            1.26.12
-
+```
 
 ## Files
 
