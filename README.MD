@@ -1,3 +1,9 @@
+# Disclaimer
+
+This tool is a best effor created to take advantage of the Umbrella APIs. This is not an official Cisco solution, there is no official documentation for this tool, and we don't provide any official support/troubleshooting.
+For the official Umbrella APIs documentation please go to: https://developer.cisco.com/docs/cloud-security/#!umbrella-introduction
+If you encounter an issue with the code, please open an issue on Github.
+
 # AD Connector Monitor
 
 The AD Connector Monitor script sends email alerts when it detects an AD connector in error state.  
@@ -12,11 +18,23 @@ git clone https://github.com/josgabfer/ADConnMon.git
 
 # Requirements:
 Package            Version
+<<<<<<< HEAD
 ------------------ ---------
 certifi            2023.7.22
 charset-normalizer 3.2.0
 idna               3.4
 oauthlib           3.2.2
+=======
+------------------ -----------
+certifi            2022.6.15.1
+charset-normalizer 2.1.1
+flatdict           4.0.1
+fsspec             2022.11.0
+idna               3.3
+numpy              1.23.3
+oauthlib           3.2.0
+pandas             1.4.4
+>>>>>>> 962be5cae346579713f1c5ed312d59d9a140b8b0
 pip                22.2.2
 requests           2.31.0
 requests-oauthlib  1.3.1
