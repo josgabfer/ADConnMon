@@ -22,7 +22,6 @@ from umbrella.UmbrellaAPI import UmbrellaAPI
 from email.message import EmailMessage
 import smtplib
 import datetime
-import json
 import os
 client_id = os.environ.get('API_KEY')
 client_secret = os.environ.get('API_SECRET')
@@ -31,8 +30,6 @@ passw = os.environ.get('PASS')
 recipients = os.environ.get('RECIPIENTS')
 token_url = os.environ.get(
     'TOKEN_URL') or 'https://api.umbrella.com/auth/v2/token'
-cur_dir = os.environ.get('CISCO_SAMPLE_DIR') or os.getcwd()
-
 
 def send_email(component):
     """This function will send an alert to the desired recipients"""
