@@ -23,20 +23,29 @@ pip install -r Requirements.txt
 
 - Create the following environment variables (in the PASS variable use the APP password created):
 
-````bash
+```bash
 export API_KEY=VALUE
 export API_SECRET=VALUE
 export EMAIL_ADDRESS=VALUE
 export PASS=VALUE
+```
 
 ## Usage
 
-Run the script manually:
+Run the script:
 
-```python
-Windows: python ADConnectorMonitor.py
-Mac: python3 ADConnectorMonitor.py
-````
+Windows:
 
-Run the script automatically:
+```
+python ADConnectorMonitor.py
+```
+
+Mac:
+
+```
+python3 ADConnectorMonitor.py
+```
+
+## Run the script automatically:
+
 Multiple tools can be used to automate the script execution, however, this is up to the user as we don't recommend any specific ways to achieve automation.
